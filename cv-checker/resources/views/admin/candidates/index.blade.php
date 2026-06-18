@@ -5,7 +5,8 @@
 @section('content')
 <!-- Filter Section -->
 <div class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm mb-8">
-    <form action="{{ route('admin.candidates.index') }}" method="GET" class="grid grid-cols-1 md:grid-cols-5 gap-6 items-end">
+    <form action="{{ route('admin.candidates.index') }}" method="GET" class="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
+        <input type="hidden" name="per_page" value="{{ request('per_page', 10) }}">
         <div class="space-y-2">
             <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Search Name / Email</label>
             <div class="relative">
@@ -29,15 +30,6 @@
         <div class="space-y-2">
             <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Filter Date</label>
             <input type="date" name="date" value="{{ request('date') }}" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand outline-none transition-all text-sm">
-        </div>
-
-        <div class="space-y-2">
-            <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Per Page</label>
-            <select name="per_page" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand outline-none transition-all text-sm appearance-none">
-                @foreach([10, 20, 50, 100] as $count)
-                    <option value="{{ $count }}" {{ request('per_page') == $count ? 'selected' : '' }}>{{ $count }} Rows</option>
-                @endforeach
-            </select>
         </div>
 
         <div class="flex gap-2">
@@ -64,6 +56,32 @@
                     View and manage all incoming applications.
                 @endif
             </p>
+        </div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Show</span>
+            <form action="{{ route('admin.candidates.index') }}" method="GET" class="inline-flex items-center">
+                @if(request('search'))
+                    <input type="hidden" name="search" value="{{ request('search') }}">
+                @endif
+                @if(request('job_id'))
+                    <input type="hidden" name="job_id" value="{{ request('job_id') }}">
+                @endif
+                @if(request('date'))
+                    <input type="hidden" name="date" value="{{ request('date') }}">
+                @endif
+                <div class="relative">
+                    <select name="per_page" onchange="this.form.submit()" class="pl-4 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand outline-none transition-all text-xs font-bold text-gray-600 appearance-none cursor-pointer">
+                        @foreach([10, 25, 50, 100] as $count)
+                            <option value="{{ $count }}" {{ (request('per_page') ?? 10) == $count ? 'selected' : '' }}>{{ $count }} Rows</option>
+                        @endforeach
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
