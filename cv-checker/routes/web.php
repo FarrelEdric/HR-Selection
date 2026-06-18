@@ -30,6 +30,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/candidates', [AdminController::class, 'candidates'])->name('candidates.index');
     Route::get('/candidates/{candidate}', [AdminController::class, 'candidateDetail'])->name('candidates.show');
     Route::delete('/candidates/{candidate}', [AdminController::class, 'candidateDestroy'])->name('candidates.destroy');
+    Route::get('/candidates/{candidate}/file/{type}', [AdminController::class, 'viewFile'])->name('candidates.view-file');
 
     // Candidate Data (New Feature)
     Route::get('/candidate-data/export', [CandidateDataController::class, 'exportCsv'])->name('candidate-data.export');

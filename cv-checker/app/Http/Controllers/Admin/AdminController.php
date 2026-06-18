@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Job;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -88,5 +89,33 @@ class AdminController extends Controller
     {
         $candidate->delete();
         return redirect()->route('admin.candidates.index')->with('success', 'Applicant deleted successfully.');
+    }
+
+    public function viewFile(Candidate $candidate, $type, Request $request)
+    {
+        $field = $type . '_file';
+        
+        if (!in_array($type, ['cv', 'portfolio', 'ktp', 'kk'])) {
+            abort(404);
+        }
+
+        $filePath = $candidate->$field;
+
+        if (!$filePath || !Storage::disk('public')->exists($filePath)) {
+            abort(404, 'File not found');
+        }
+
+        $fullPath = Storage::disk('public')->path($filePath);
+        $mimeType = Storage::disk('public')->mimeType($filePath);
+
+        if ($request->has('download')) {
+            return response()->download($fullPath, basename($filePath), [
+                'Content-Type' => $mimeType,
+            ]);
+        }
+
+        return response()->file($fullPath, [
+            'Content-Type' => $mimeType,
+        ]);
     }
 }

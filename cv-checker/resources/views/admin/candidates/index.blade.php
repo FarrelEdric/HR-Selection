@@ -158,8 +158,8 @@
                                                 </svg>
                                             </div>
                                             <div class="flex gap-2">
-                                                <a href="{{ Storage::disk('public')->url($candidate->cv_file) }}" target="_blank" class="px-4 py-2 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand hover:text-white transition-all">View</a>
-                                                <a href="{{ Storage::disk('public')->url($candidate->cv_file) }}" download class="p-2 bg-gray-50 text-gray-700 rounded-xl hover:bg-brand hover:text-white transition-all">
+                                                <a href="{{ route('admin.candidates.view-file', ['candidate' => $candidate->id, 'type' => 'cv']) }}" target="_blank" class="px-4 py-2 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand hover:text-white transition-all">View</a>
+                                                <a href="{{ route('admin.candidates.view-file', ['candidate' => $candidate->id, 'type' => 'cv', 'download' => 1]) }}" class="p-2 bg-gray-50 text-gray-700 rounded-xl hover:bg-brand hover:text-white transition-all">
                                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                                     </svg>
@@ -180,8 +180,8 @@
                                             </div>
                                             @if($candidate->portfolio_file)
                                             <div class="flex gap-2">
-                                                <a href="{{ Storage::disk('public')->url($candidate->portfolio_file) }}" target="_blank" class="px-4 py-2 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand hover:text-white transition-all">View</a>
-                                                <a href="{{ Storage::disk('public')->url($candidate->portfolio_file) }}" download class="p-2 bg-gray-50 text-gray-700 rounded-xl hover:bg-brand hover:text-white transition-all">
+                                                <a href="{{ route('admin.candidates.view-file', ['candidate' => $candidate->id, 'type' => 'portfolio']) }}" target="_blank" class="px-4 py-2 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand hover:text-white transition-all">View</a>
+                                                <a href="{{ route('admin.candidates.view-file', ['candidate' => $candidate->id, 'type' => 'portfolio', 'download' => 1]) }}" class="p-2 bg-gray-50 text-gray-700 rounded-xl hover:bg-brand hover:text-white transition-all">
                                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                                     </svg>
@@ -203,8 +203,8 @@
                                             </div>
                                             @if($candidate->ktp_file)
                                             <div class="flex gap-2">
-                                                <a href="{{ Storage::disk('public')->url($candidate->ktp_file) }}" target="_blank" class="px-4 py-2 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand hover:text-white transition-all">View</a>
-                                                <a href="{{ Storage::disk('public')->url($candidate->ktp_file) }}" download class="p-2 bg-gray-50 text-gray-700 rounded-xl hover:bg-brand hover:text-white transition-all">
+                                                <a href="{{ route('admin.candidates.view-file', ['candidate' => $candidate->id, 'type' => 'ktp']) }}" target="_blank" class="px-4 py-2 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand hover:text-white transition-all">View</a>
+                                                <a href="{{ route('admin.candidates.view-file', ['candidate' => $candidate->id, 'type' => 'ktp', 'download' => 1]) }}" class="p-2 bg-gray-50 text-gray-700 rounded-xl hover:bg-brand hover:text-white transition-all">
                                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                                     </svg>
@@ -226,8 +226,8 @@
                                             </div>
                                             @if($candidate->kk_file)
                                             <div class="flex gap-2">
-                                                <a href="{{ Storage::disk('public')->url($candidate->kk_file) }}" target="_blank" class="px-4 py-2 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand hover:text-white transition-all">View</a>
-                                                <a href="{{ Storage::disk('public')->url($candidate->kk_file) }}" download class="p-2 bg-gray-50 text-gray-700 rounded-xl hover:bg-brand hover:text-white transition-all">
+                                                <a href="{{ route('admin.candidates.view-file', ['candidate' => $candidate->id, 'type' => 'kk']) }}" target="_blank" class="px-4 py-2 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand hover:text-white transition-all">View</a>
+                                                <a href="{{ route('admin.candidates.view-file', ['candidate' => $candidate->id, 'type' => 'kk', 'download' => 1]) }}" class="p-2 bg-gray-50 text-gray-700 rounded-xl hover:bg-brand hover:text-white transition-all">
                                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                                     </svg>
