@@ -15,9 +15,6 @@ class AdminController extends Controller
         $totalCandidates = Candidate::count();
         $totalJobs = Job::count();
         $recentCandidates = Candidate::with('job')->latest()->take(5)->get();
-        
-        $acceptedCount = Candidate::where('status', 'accepted')->count();
-        $pendingCount = Candidate::where('status', 'pending')->count();
 
         // Handle date filtering for the chart
         $startDate = $request->filled('start_date') ? now()->parse($request->start_date) : now()->subDays(6);
@@ -46,8 +43,6 @@ class AdminController extends Controller
             'totalJobs', 
             'recentCandidates', 
             'chartData',
-            'acceptedCount',
-            'pendingCount',
             'startDate',
             'endDate',
             'jobInterest'

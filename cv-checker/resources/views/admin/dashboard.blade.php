@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Stats Cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
     <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
         <div class="flex items-center gap-4">
             <div class="w-12 h-12 bg-brand/10 rounded-2xl flex items-center justify-center text-brand">
@@ -29,34 +29,6 @@
             <div>
                 <p class="text-sm font-medium text-gray-500">Active Jobs</p>
                 <h3 class="text-2xl font-bold text-gray-900">{{ $totalJobs }}</h3>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-            </div>
-            <div>
-                <p class="text-sm font-medium text-gray-500">Accepted</p>
-                <h3 class="text-2xl font-bold text-gray-900">{{ $acceptedCount }}</h3>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-            </div>
-            <div>
-                <p class="text-sm font-medium text-gray-500">Review Process</p>
-                <h3 class="text-2xl font-bold text-gray-900">{{ $pendingCount }}</h3>
             </div>
         </div>
     </div>
