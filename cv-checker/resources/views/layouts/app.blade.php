@@ -37,6 +37,12 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="{{ route('home') }}" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors">Find Jobs</a>
+                    <a href="{{ route('download.cv-template') }}" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-gray-450" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        Template CV ATS
+                    </a>
                     <a href="#" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors">For Employers</a>
                     <a href="{{ route('admin.dashboard') }}" class="px-5 py-2.5 bg-gray-50 text-gray-900 text-sm font-semibold rounded-full hover:bg-gray-100 transition-all border border-gray-200">Admin Login</a>
                 </div>

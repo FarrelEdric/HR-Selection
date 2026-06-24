@@ -67,6 +67,7 @@ class CvResultController extends Controller
         $selectedCity = $request->get('city');
         $selectedSearch = $request->get('search');
         $selectedStatus = $request->get('status');
+        $selectedDate = $request->get('date');
         $selectedSort = $request->get('sort', 'score_date'); // Default to score_date
 
         // Query CV results
@@ -104,12 +105,16 @@ class CvResultController extends Controller
             }
         }
 
+        // Apply Date filter
+        if ($selectedDate) {
+            $query->whereDate(\Illuminate\Support\Facades\DB::raw('COALESCE(processed_at, CONVERT_TZ(created_at, "+00:00", "+07:00"))'), $selectedDate);
+        }
+
         // Apply Sorting
         if ($selectedSort === 'date_desc') {
-            // Filter only candidates processed today
-            $today = \Carbon\Carbon::today()->format('Y-m-d');
-            $query->whereDate(\Illuminate\Support\Facades\DB::raw('COALESCE(processed_at, created_at)'), $today)
-                  ->orderBy('created_at', 'desc');
+            $today = \Carbon\Carbon::now('Asia/Jakarta')->format('Y-m-d');
+            $query->whereDate(\Illuminate\Support\Facades\DB::raw('COALESCE(processed_at, CONVERT_TZ(created_at, "+00:00", "+07:00"))'), $today)
+                  ->orderBy(\Illuminate\Support\Facades\DB::raw('COALESCE(processed_at, created_at)'), 'desc');
         } elseif ($selectedSort === 'score_desc') {
             $query->orderBy('score', 'desc');
         } elseif ($selectedSort === 'score_asc') {
@@ -139,7 +144,7 @@ class CvResultController extends Controller
         $totalCandidates = CvResult::count();
 
         // Flag to check if any filters are active
-        $hasActiveFilters = $selectedPosition || $selectedCity || $selectedSearch || $selectedStatus || $selectedSort !== 'score_date';
+        $hasActiveFilters = $selectedPosition || $selectedCity || $selectedSearch || $selectedStatus || $selectedDate || $selectedSort !== 'score_date';
 
         return view('cv-results.index', compact(
             'results', 
@@ -150,6 +155,7 @@ class CvResultController extends Controller
             'selectedCity', 
             'selectedSearch', 
             'selectedStatus', 
+            'selectedDate',
             'selectedSort',
             'hasActiveFilters'
         ));

@@ -58,4 +58,12 @@ class PublicController extends Controller
             'message' => 'Lamaran berhasil dikirim'
         ]);
     }
+
+    public function downloadCvTemplate()
+    {
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('public.cv-template-ats')
+            ->setPaper('a4', 'portrait');
+
+        return $pdf->download('contoh-cv-ats-proper.pdf');
+    }
 }

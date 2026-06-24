@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::get('/', [PublicController::class, 'index'])->name('home');
+Route::get('/download-cv-ats', [PublicController::class, 'downloadCvTemplate'])->name('download.cv-template');
 Route::get('/job/{job}', [PublicController::class, 'show'])->name('job.show');
 Route::post('/job/{job}/apply', [PublicController::class, 'apply'])->name('job.apply');
 

@@ -27,7 +27,7 @@
     <!-- Filters Section -->
     <div class="bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm">
         <form action="{{ route('admin.cv-results.index') }}" method="GET" class="space-y-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
                 <!-- Search Input -->
                 <div class="relative sm:col-span-2 lg:col-span-1">
                     <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -70,6 +70,12 @@
                         <option value="consider" {{ $selectedStatus == 'consider' ? 'selected' : '' }}>Consider</option>
                         <option value="not_recommended" {{ $selectedStatus == 'not_recommended' ? 'selected' : '' }}>Not Recommended</option>
                     </select>
+                </div>
+
+                <!-- Date Input -->
+                <div>
+                    <input type="date" name="date" value="{{ $selectedDate }}" onchange="this.form.submit()" 
+                           class="w-full bg-gray-50/50 border border-gray-200 rounded-xl px-3 py-2.5 text-xs text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand shadow-sm cursor-pointer">
                 </div>
 
                 <!-- Sort Dropdown -->
